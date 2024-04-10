@@ -2,27 +2,16 @@
 
     use Lib\Route;
     use App\Controllers\HomeController;
-    
+    use App\Controllers\MemberController;
+
     Route::get('/', [HomeController::class, 'index']);
 
-    Route::get('/login', function(){
-        return 'Login';
-    });
-
-    Route::get('/register', function(){
-        return 'Register';
-    });
-
-    Route::get('/home', function(){
-        return 'Home';
-    });
-
-    Route::get('/members', function(){
-        return 'Miembros';
-    });
-
-    Route::get('/members/:id', function($id){
-        return 'Miembro '.$id;
-    });
+    Route::get('/members', [MemberController::class, 'index']);
+    Route::get('/members/create', [MemberController::class, 'create']);
+    Route::post('/members', [MemberController::class, 'store']);
+    Route::get('/members/:id/edit', [MemberController::class, 'edit']);
+    Route::get('/members/:id', [MemberController::class, 'show']); // Tiene que estar al final para no sobreescribir las demás rutas
+    Route::post('/members/:id', [MemberController::class, 'update']);
+    Route::post('/members/:id/delete', [MemberController::class, 'destroy']);
 
     Route::dispatch();
