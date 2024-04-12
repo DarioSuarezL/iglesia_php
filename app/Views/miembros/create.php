@@ -9,7 +9,7 @@
 <body>
 
     <div class="px-5 py-3">
-        <form action="/members" method="POST">
+        <form action="/miembros" method="POST">
             <h2 class="text-center">Registrar un nuevo miembro</h2>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
@@ -29,11 +29,11 @@
             </div>
             <div class="form-group">
                 <label for="estado_civil">Estado civil:</label>
-                <select name="estado_civil" id="estado_civil" class="form-control">
-                    <option value="SOLTERO">Soltero</option>
-                    <option value="CASADO">Casado</option>
-                    <option value="DIVORCIADO">Divorciado</option>
-                    <option value="VIUDO">Viudo</option>
+                <select name="estado_civil_id" id="estado_civil_id" class="form-control">
+                    <option value=1>Soltero</option>
+                    <option value=2>Casado</option>
+                    <option value=3>Divorciado</option>
+                    <option value=4>Viudo</option>
                 </select>
                 <!-- <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" /> -->
             </div>

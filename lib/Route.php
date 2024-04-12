@@ -33,9 +33,6 @@
 
                 if(preg_match("#^$route$#", $uri, $matches)){
                     $params = array_slice($matches, 1);
-                    // echo json_encode($params);
-
-                    // $response = $callback(...$params);
 
                     if(is_array($callback)){
                         $controller = new $callback[0];
@@ -55,12 +52,6 @@
 
                     return;
                 }
-
-
-                // if($uri == $route){
-                //     $callback();
-                //     return;
-                // }
             }
 
             echo '404 - Not Found';
