@@ -28,6 +28,9 @@
             <div class="container">
                 <p><span class="font-weight-bold">Correo electronico: </span><?= $miembro['email'] ?></p>
             </div>
+            <div class="container">
+                <p><span class="font-weight-bold">Registrado en: </span><?= $miembro['created_at'] ?></p>
+            </div>
             <div class="d-flex">
                 <a href="/miembros/<?=$miembro['id']?>/edit"
                     class="btn btn-primary mx-1">
