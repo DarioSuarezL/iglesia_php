@@ -9,6 +9,12 @@ CREATE TABLE ministerios(
     PRIMARY KEY(id)
 );
 
+INSERT INTO ministerios(nombre) VALUES('Ministerio de Música');
+INSERT INTO ministerios(nombre) VALUES('Ministerio de Enseñanza');
+INSERT INTO ministerios(nombre) VALUES('Ministerio de Consejería');
+INSERT INTO ministerios(nombre) VALUES('Ministerio de Jóvenes');
+INSERT INTO ministerios(nombre) VALUES('Ministerio de Servicio');
+
 CREATE TABLE cargos(
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,

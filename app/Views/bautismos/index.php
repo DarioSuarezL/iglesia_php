@@ -11,12 +11,12 @@
     <div class="p-4">
         <h1><?php echo $title ?></h1>
     
-        <a href="/ministerios/create" class="btn btn-primary" >Crear ministerio</a>
+        <a href="/bautismos/create" class="btn btn-primary" >Registrar bautismo</a>
     
-        <?php foreach($ministerios as $ministerio): ?>
+        <?php foreach($bautismos as $bautismo): ?>
             <li>
-                <a href="/ministerios/<?= $ministerio['id'] ?>">
-                    <?= $ministerio['nombre'] ?>
+                <a href="/bautismos/<?= $bautismo['id'] ?>">
+                    <?= $bautismo['fecha_bautizo'] ?>
                 </a>
             </li>
         <?php endforeach; ?>

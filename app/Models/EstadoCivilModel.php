@@ -1,10 +1,8 @@
 <?php
 
-    namespace App\Models;
+namespace App\Models;
 
-    use mysqli;
-
-    class EstadoCivilModel extends Model{
-        protected $table = 'estados_civil';
-
-    }
+class EstadoCivilModel extends Model
+{
+    protected $table = 'estados_civil';
+}

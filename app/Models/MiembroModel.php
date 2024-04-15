@@ -1,10 +1,8 @@
 <?php
 
-    namespace App\Models;
+namespace App\Models;
 
-    use mysqli;
-
-    class MiembroModel extends Model{
-        protected $table = 'miembros';
-
-    }
+class MiembroModel extends Model
+{
+    protected $table = 'miembros';
+}

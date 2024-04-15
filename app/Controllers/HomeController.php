@@ -1,11 +1,13 @@
 <?php
 
-    namespace App\Controllers;
+namespace App\Controllers;
 
-    class HomeController extends Controller{
-        public function index(){
-            return $this->view('home', [
-                'title' => 'Home'
-            ]);
-        }
+class HomeController extends Controller
+{
+    public function index()
+    {
+        return $this->view('home', [
+            'title' => 'Home'
+        ]);
     }
+}

@@ -1,10 +1,8 @@
 <?php
 
-    namespace App\Models;
+namespace App\Models;
 
-    use mysqli;
-
-    class MinisterioModel extends Model{
-        protected $table = 'ministerios';
-
-    }
+class MinisterioModel extends Model
+{
+    protected $table = 'ministerios';
+}

@@ -11,12 +11,12 @@
     <div class="p-4">
         <h1><?php echo $title ?></h1>
     
-        <a href="/ministerios/create" class="btn btn-primary" >Crear ministerio</a>
+        <a href="/cargos/create" class="btn btn-primary" >Crear cargo</a>
     
-        <?php foreach($ministerios as $ministerio): ?>
+        <?php foreach($cargos as $cargo): ?>
             <li>
-                <a href="/ministerios/<?= $ministerio['id'] ?>">
-                    <?= $ministerio['nombre'] ?>
+                <a href="/cargos/<?= $cargo['id'] ?>">
+                    <?= $cargo['nombre'] ?>
                 </a>
             </li>
         <?php endforeach; ?>

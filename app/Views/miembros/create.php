@@ -30,12 +30,19 @@
             <div class="form-group">
                 <label for="estado_civil">Estado civil:</label>
                 <select name="estado_civil_id" id="estado_civil_id" class="form-control">
-                    <option value=1>Soltero</option>
-                    <option value=2>Casado</option>
-                    <option value=3>Divorciado</option>
-                    <option value=4>Viudo</option>
+                    <?php foreach($estados_civil as $estado_civil): ?>
+                    <option value=<?= $estado_civil['id'] ?>><?= $estado_civil['descripcion'] ?></option>
+                    <?php endforeach ?>
                 </select>
-                <!-- <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" /> -->
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <select name="cargo_id" id="cargo_id" class="form-control">
+                    <option value="">-- NINGUNO --</option>
+                    <?php foreach($cargos as $cargo): ?>
+                    <option value=<?= $cargo['id'] ?>><?= $cargo['nombre'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="sexo">Sexo:</label>

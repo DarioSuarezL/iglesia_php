@@ -11,9 +11,9 @@
         <h1>Administrar iglesia</h1>
         <a href="/miembros" class="btn btn-primary">Miembros</a>
         <a href="/ministerios" class="btn btn-primary">Ministerios</a>
+        <a href="/cargos" class="btn btn-primary">Cargos</a>
+        <a href="/bautismos" class="btn btn-primary">Certificados de Bautizo</a>
         <a href="#" class="btn btn-primary">Certificados de Matrimonio</a>
-        <a href="#" class="btn btn-primary">Certificados de Bautizo</a>
-        <a href="#" class="btn btn-primary">Cargos</a>
     </div>
 </body>
 </html>

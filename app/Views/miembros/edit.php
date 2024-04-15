@@ -28,14 +28,21 @@
                 <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control"  value="<?= $miembro['fecha_nacimiento']?>" />
             </div>
             <div class="form-group">
-                <label for="estado_civil_id">Estado civil:</label>
+                <label for="cargo_id">Estado civil:</label>
                 <select name="estado_civil_id" id="estado_civil_id" class="form-control">
-                    <option value=1 <?php if($miembro['estado_civil_id'] == 1) echo 'selected' ?>>Soltero</option>
-                    <option value=2 <?php if($miembro['estado_civil_id'] == 2) echo 'selected' ?>>Casado</option>
-                    <option value=3 <?php if($miembro['estado_civil_id'] == 3) echo 'selected' ?>>Divorciado</option>
-                    <option value=4 <?php if($miembro['estado_civil_id'] == 4) echo 'selected' ?>>Viudo</option>
+                    <?php foreach($estados_civil as $estado_civil): ?>
+                    <option value=<?= $estado_civil['id'] ?> <?php if($miembro['estado_civil_id'] == $estado_civil['id']) echo 'selected' ?>><?= $estado_civil['descripcion'] ?></option>
+                    <?php endforeach ?>
                 </select>
-                <!-- <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" /> -->
+            </div>
+            <div class="form-group">
+                <label for="cargo_id">Estado civil:</label>
+                <select name="cargo_id" id="cargo_id" class="form-control">
+                    <option value="">-- NINGUNO --</option>
+                    <?php foreach($cargos as $cargo): ?>
+                    <option value=<?= $cargo['id'] ?> <?php if($miembro['cargo_id'] == $cargo['id']) echo 'selected' ?>><?= $cargo['nombre'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="sexo">Sexo:</label>
