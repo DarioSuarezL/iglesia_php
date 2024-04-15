@@ -13,7 +13,7 @@
         <a href="/ministerios" class="btn btn-primary">Ministerios</a>
         <a href="/cargos" class="btn btn-primary">Cargos</a>
         <a href="/bautismos" class="btn btn-primary">Certificados de Bautizo</a>
-        <a href="#" class="btn btn-primary">Certificados de Matrimonio</a>
+        <a href="/matrimonios" class="btn btn-primary">Certificados de Matrimonio</a>
     </div>
 </body>
 </html>

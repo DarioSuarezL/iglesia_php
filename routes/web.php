@@ -6,6 +6,7 @@ use App\Controllers\HomeController;
 use App\Controllers\CargoController;
 use App\Controllers\MiembroController;
 use App\Controllers\BautismoController;
+use App\Controllers\MatrimonioController;
 use App\Controllers\MinisterioController;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -44,6 +45,14 @@ Route::get('/bautismos/:id/edit', [BautismoController::class, 'edit']);
 Route::get('/bautismos/:id', [BautismoController::class, 'show']); // Tiene que estar al final para no sobreescribir las demás rutas
 Route::post('/bautismos/:id', [BautismoController::class, 'update']);
 Route::post('/bautismos/:id/delete', [BautismoController::class, 'destroy']);
+
+Route::get('/matrimonios', [MatrimonioController::class, 'index']);
+Route::get('/matrimonios/create', [MatrimonioController::class, 'create']);
+Route::post('/matrimonios', [MatrimonioController::class, 'store']);
+Route::get('/matrimonios/:id/edit', [MatrimonioController::class, 'edit']);
+Route::get('/matrimonios/:id', [MatrimonioController::class, 'show']); // Tiene que estar al final para no sobreescribir las demás rutas
+Route::post('/matrimonios/:id', [MatrimonioController::class, 'update']);
+Route::post('/matrimonios/:id/delete', [MatrimonioController::class, 'destroy']);
 
 
 Route::dispatch();
