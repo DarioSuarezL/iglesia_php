@@ -6,6 +6,7 @@ use App\Controllers\HomeController;
 use App\Controllers\CargoController;
 use App\Controllers\MiembroController;
 use App\Controllers\BautismoController;
+use App\Controllers\RelacionController;
 use App\Controllers\MatrimonioController;
 use App\Controllers\MinisterioController;
 
@@ -53,6 +54,11 @@ Route::get('/matrimonios/:id/edit', [MatrimonioController::class, 'edit']);
 Route::get('/matrimonios/:id', [MatrimonioController::class, 'show']); // Tiene que estar al final para no sobreescribir las demás rutas
 Route::post('/matrimonios/:id', [MatrimonioController::class, 'update']);
 Route::post('/matrimonios/:id/delete', [MatrimonioController::class, 'destroy']);
+
+
+Route::get('/relaciones/:id/create', [RelacionController::class, 'create']);
+Route::post('/relaciones/:id', [RelacionController::class, 'store']);
+Route::post('/relaciones/:id/:id_relacionado/delete', [RelacionController::class, 'destroy']);
 
 
 Route::dispatch();

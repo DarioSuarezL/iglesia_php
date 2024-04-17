@@ -12,6 +12,10 @@ class CargoController extends Controller
         $model = new CargoModel;
         $data = $model->all();
 
+        foreach ($data as $key => $value) {
+            $data[$key]['ministerio_nombre'] = (new MinisterioModel)->find($value['ministerio_id'])['nombre'];
+        }
+
         return $this->view('cargos.index', [
             'title' => 'Administrar cargos',
             'cargos' => $data

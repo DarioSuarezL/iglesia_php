@@ -10,13 +10,14 @@
 
     <div class="p-4">
         <h1><?php echo $title ?></h1>
-    
+        
+        <a href="/" class="btn btn-primary" >← Volver</a>    
         <a href="/bautismos/create" class="btn btn-primary" >Registrar bautismo</a>
     
         <?php foreach($bautismos as $bautismo): ?>
             <li>
                 <a href="/bautismos/<?= $bautismo['id'] ?>">
-                    <?= $bautismo['fecha_bautizo'] ?>
+                    <?= $bautismo['fecha_bautizo'].' --- '.$bautismo['miembro'] ?>
                 </a>
             </li>
         <?php endforeach; ?>

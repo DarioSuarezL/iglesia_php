@@ -39,6 +39,61 @@
         <div class="container">
             <p><span class="font-weight-bold">Registrado en: </span><?= $miembro['created_at'] ?></p>
         </div>
+        <?php if($padres != null): ?>
+        <div class="container">
+            <p><span class="font-weight-bold">Padres: </span>
+                <?php
+                foreach ($padres as $padre) {
+                    echo $padre['nombre'] . ' ' . $padre['apellido_paterno'] . ' ' . $padre['apellido_materno'] . ', ';
+                }
+                ?>
+            </p>
+        </div>
+        <?php endif; ?>
+        <?php if($tios != null): ?>
+        <div class="container">
+            <p><span class="font-weight-bold">Tios: </span>
+                <?php
+                foreach ($tios as $tio) {
+                    echo $tio['nombre'] . ' ' . $tio['apellido_paterno'] . ' ' . $tio['apellido_materno'] . ', ';
+                }
+                ?>
+            </p>
+        </div>
+        <?php endif; ?>
+        <?php if($hermanos != null): ?>
+        <div class="container">
+            <p><span class="font-weight-bold">Hermanos: </span>
+                <?php
+                foreach ($hermanos as $hermano) {
+                    echo $hermano['nombre'] . ' ' . $hermano['apellido_paterno'] . ' ' . $hermano['apellido_materno'] . ', ';
+                }
+                ?>
+            </p>
+        </div>
+        <?php endif; ?>
+        <?php if($primos != null): ?>
+        <div class="container">
+            <p><span class="font-weight-bold">Hermanos: </span>
+                <?php
+                foreach ($primos as $primo) {
+                    echo $primo['nombre'] . ' ' . $primo['apellido_paterno'] . ' ' . $primo['apellido_materno'] . ', ';
+                }
+                ?>
+            </p>
+        </div>
+        <?php endif; ?>
+        <?php if($abuelos != null): ?>
+        <div class="container">
+            <p><span class="font-weight-bold">Hermanos: </span>
+                <?php
+                foreach ($abuelos as $abuelo) {
+                    echo $abuelo['nombre'] . ' ' . $abuelo['apellido_paterno'] . ' ' . $abuelo['apellido_materno'] . ', ';
+                }
+                ?>
+            </p>
+        </div>
+        <?php endif; ?>
         <div class="d-flex">
             <a href="/miembros/<?= $miembro['id'] ?>/edit" class="btn btn-primary mx-1">
                 Editar miembro
@@ -48,6 +103,9 @@
                     Eliminar miembro
                 </button>
             </form>
+            <a href="/relaciones/<?= $miembro['id'] ?>/create" class="btn btn-secondary mx-1">
+                Agregar relación
+            </a>
         </div>
     </div>
 </body>

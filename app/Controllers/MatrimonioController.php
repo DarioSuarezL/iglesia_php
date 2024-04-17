@@ -10,6 +10,12 @@ class MatrimonioController extends Controller
     public function index()
     {
         $matrimonios = (new MatrimonioModel)->all();
+
+        foreach ($matrimonios as $key => $value) {
+            $matrimonios[$key]['esposo'] = (new MiembroModel)->find($value['esposo_id'])['nombre'];
+            $matrimonios[$key]['esposa'] = (new MiembroModel)->find($value['esposa_id'])['nombre'];
+        }
+
         return $this->view('matrimonios.index', [
             'title' => 'Certificados de Matrimonio',
             'matrimonios' => $matrimonios

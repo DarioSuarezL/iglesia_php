@@ -11,6 +11,7 @@
     <div class="p-4">
         <h1><?php echo $title ?></h1>
     
+        <a href="/" class="btn btn-primary" >← Volver</a>
         <a href="/ministerios/create" class="btn btn-primary" >Crear ministerio</a>
     
         <?php foreach($ministerios as $ministerio): ?>

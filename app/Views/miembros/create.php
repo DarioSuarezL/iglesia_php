@@ -28,7 +28,7 @@
                 <input name="fecha_nacimiento" id="fecha_nacimiento" type="date" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="estado_civil">Estado civil:</label>
+                <label for="estado_civil_id">Estado civil:</label>
                 <select name="estado_civil_id" id="estado_civil_id" class="form-control">
                     <?php foreach($estados_civil as $estado_civil): ?>
                     <option value=<?= $estado_civil['id'] ?>><?= $estado_civil['descripcion'] ?></option>

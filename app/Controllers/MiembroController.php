@@ -14,8 +14,9 @@ class MiembroController extends Controller
 
     public function index()
     {
-        $data = new MiembroModel;
-        $data = $data->all();
+        $model = new MiembroModel;
+        $data = $model->all();
+
         return $this->view('miembros.index', [
             'title' => 'Miembros',
             'miembros' => $data
@@ -50,17 +51,28 @@ class MiembroController extends Controller
 
     public function show($id)
     {
-        $data = new MiembroModel;
-        $data = $data->find($id);
-        $estado_civil = new EstadoCivilModel;
-        $data['estado_civil_id'] = $estado_civil->find($data['estado_civil_id'])['descripcion'];
+        
+        $padres = (new MiembroModel)->padres($id);
+        $tios = (new MiembroModel)->tios($id);
+        $hermanos = (new MiembroModel)->hermanos($id);
+        $primos = (new MiembroModel)->primos($id);
+        $abuelos = (new MiembroModel)->abuelos($id);
+
+
+        $data = (new MiembroModel)->find($id);
+        $data['estado_civil_id'] = (new EstadoCivilModel)->find($data['estado_civil_id'])['descripcion'];
 
         if ($data['cargo_id'])
             $data['cargo_id'] = (new CargoModel)->find($data['cargo_id'])['nombre'];
 
         return $this->view('miembros.show', [
             'title' => 'Miembro número ' . $id,
-            'miembro' => $data
+            'miembro' => $data,
+            'padres' => $padres,
+            'tios' => $tios,
+            'hermanos' => $hermanos,
+            'primos' => $primos,
+            'abuelos' => $abuelos
         ]);
     }
 

@@ -10,6 +10,11 @@ class BautismoController extends Controller
     public function index()
     {
         $data = (new BautismoModel)->all();
+
+        foreach ($data as $key => $value) {
+            $data[$key]['miembro'] = (new MiembroModel)->find($value['miembro_id'])['nombre'];
+        }
+
         return $this->view('bautismos.index',[
             'title' => 'Bautismos',
             'bautismos' => $data
