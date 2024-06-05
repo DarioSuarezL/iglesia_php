@@ -8,8 +8,8 @@ class MinisterioController extends Controller
 {
     public function index()
     {
-        $model = new MinisterioModel;
-        $model = $model->all();
+        $model = (new MinisterioModel)->all();
+
         return $this->view('ministerios.index', [
             'title' => 'Ministerios',
             'ministerios' => $model
@@ -28,14 +28,14 @@ class MinisterioController extends Controller
         $data = $_POST;
         $model = new MinisterioModel;
         $model->create($data);
+        unset($model);
         // return json_encode($model);
         $this->redirect('/ministerios');
     }
 
     public function show($id)
     {
-        $model = new MinisterioModel;
-        $model = $model->find($id);
+        $model = (new MinisterioModel)->find($id);
         return $this->view('ministerios.show', [
             'title' => 'Ministerio número ' . $id,
             'ministerio' => $model
@@ -44,8 +44,7 @@ class MinisterioController extends Controller
 
     public function edit($id)
     {
-        $model = new MinisterioModel;
-        $model = $model->find($id);
+        $model = (new MinisterioModel)->find($id);
         return $this->view('ministerios.edit', [
             'title' => 'Editar ministerio número ' . $id,
             'ministerio' => $model
@@ -55,8 +54,7 @@ class MinisterioController extends Controller
     public function update($id)
     {
         $data = $_POST;
-        $model = new MinisterioModel;
-        $model->update($id, $data);
+        (new MinisterioModel)->update($id, $data);
         $this->redirect('/ministerios');
     }
 
@@ -64,6 +62,7 @@ class MinisterioController extends Controller
     {
         $model = new MinisterioModel;
         $model->delete($id);
+        unset($model);
         $this->redirect('/ministerios');
     }
 }

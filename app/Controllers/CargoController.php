@@ -24,8 +24,7 @@ class CargoController extends Controller
 
     public function create()
     {
-        $model = new MinisterioModel;
-        $ministerios = $model->all();
+        $ministerios = (new MinisterioModel)->all();
         return $this->view('cargos.create', [
             'title' => 'Registrar cargo',
             'ministerios' => $ministerios
@@ -34,10 +33,8 @@ class CargoController extends Controller
 
     public function edit($id)
     {
-        $model = new CargoModel;
-        $data = $model->find($id);
-        $model = new MinisterioModel;
-        $ministerios = $model->all();
+        $data = (new CargoModel)->find($id);
+        $ministerios = (new MinisterioModel)->all();
         return $this->view('cargos.edit', [
             'title' => 'Editar cargo',
             'cargo' => $data,
@@ -47,11 +44,9 @@ class CargoController extends Controller
     
     public function show($id)
     {
-        $model = new CargoModel;
-        $data = $model->find($id);
+        $data = (new CargoModel)->find($id);
+        $ministerio = (new MinisterioModel)->find($data['ministerio_id']);
         
-        $ministerio = new MinisterioModel;
-        $ministerio = $ministerio->find($data['ministerio_id']);
         $data['ministerio_id'] = $ministerio['nombre'];
         
         return $this->view('cargos.show', [
@@ -68,6 +63,7 @@ class CargoController extends Controller
         $data = $_POST;
         $model = new CargoModel;
         $model->create($data);
+        unset($model);
         return header('Location: /cargos');
     }
 
@@ -76,6 +72,7 @@ class CargoController extends Controller
         $data = $_POST;
         $model = new CargoModel;
         $model->update($id, $data);
+        unset($model);
         return header('Location: /cargos');
     }
 
@@ -83,6 +80,7 @@ class CargoController extends Controller
     {
         $model = new CargoModel;
         $model->delete($id);
+        unset($model);
         return header('Location: /cargos');
     }
 }

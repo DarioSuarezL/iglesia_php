@@ -10,10 +10,9 @@ class RelacionController extends Controller
 {
     public function create($id)
     {
-        $miembroModel = new MiembroModel();
 
-        $miembroPrincipal = $miembroModel->find($id);
-        $miembros = $miembroModel->all();
+        $miembroPrincipal = (new MiembroModel)->find($id);
+        $miembros = (new MiembroModel)->all();
 
         $relacionados = (new MiembroModel)->parientes($id);
 
@@ -32,8 +31,7 @@ class RelacionController extends Controller
     
     public function store($id)
     {
-        $relacionModel = new RelacionModel();
-        $relacionModel->create([
+        (new RelacionModel)->create([
             'miembro_id' => $id,
             'tipo_relacion_id' => $_POST['tipo_relacion_id'],
             'miembro_relacionado_id' => $_POST['miembro_relacionado_id']

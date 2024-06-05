@@ -14,8 +14,7 @@ class MiembroController extends Controller
 
     public function index()
     {
-        $model = new MiembroModel;
-        $data = $model->all();
+        $data = (new MiembroModel)->all();
 
         return $this->view('miembros.index', [
             'title' => 'Miembros',
@@ -39,8 +38,7 @@ class MiembroController extends Controller
     {
         $estados_civil = (new EstadoCivilModel)->all();
         $cargos = (new CargoModel)->all();
-        $data = new MiembroModel;
-        $data = $data->find($id);
+        $data = (new MiembroModel)->find($id);
         return $this->view('miembros.edit', [
             'title' => 'Editar miembro ' . $id,
             'miembro' => $data,
@@ -85,6 +83,7 @@ class MiembroController extends Controller
         $model = new MiembroModel;
         if($data['cargo_id'] == '') unset($data['cargo_id']);
         $model->create($data);
+        unset($model);
         $this->redirect('/miembros');
     }
     
@@ -95,13 +94,15 @@ class MiembroController extends Controller
         if($data['cargo_id'] == '') unset($data['cargo_id']);
         $model = new MiembroModel;
         $model->update($id, $data);
+        unset($model);
         $this->redirect('/miembros/' . $id);
     }
-
+    
     public function destroy($id)
     {
         $model = new MiembroModel;
         $model->delete($id);
+        unset($model);
         $this->redirect('/miembros');
     }
 }
