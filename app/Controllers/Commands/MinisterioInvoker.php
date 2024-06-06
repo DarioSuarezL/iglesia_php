@@ -7,7 +7,14 @@ class MinisterioInvoker
     private Command $command;
     private $command_history = [];
 
-    public function __construct(){}
+    public function __construct(){
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $this->command_history = $_SESSION['command_history'] ?? [];
+    }
+
 
     public function setCommand(Command $cmd)
     {
@@ -18,6 +25,7 @@ class MinisterioInvoker
     {
         $this->command->execute();
         $this->command_history[] = $this->command;
+        $_SESSION['command_history'] = $this->command_history;
     }
 
     public function undoCommand()
@@ -25,9 +33,8 @@ class MinisterioInvoker
         $cmd = array_pop($this->command_history);
         if ($cmd != null) {
             $cmd->undo();
-        }else{
-            echo "No hay comandos para deshacer";
         }
+        $_SESSION['command_history'] = $this->command_history;
     }
 
 }

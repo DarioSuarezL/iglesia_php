@@ -11,18 +11,17 @@ class DestroyCommand implements Command
 
     public function __construct($data)
     {
-        $this->ministerioModel = (new MinisterioModel);
         $this->data = $data;
     }
 
     public function execute()
     {
-        $this->ministerioModel->delete($this->data['id']);
+        (new MinisterioModel)->delete($this->data['id']);
     }
 
     public function undo()
     {
-        $this->ministerioModel->create($this->data);
+        (new MinisterioModel)->create($this->data);
     }
 
 }

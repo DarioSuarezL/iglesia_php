@@ -95,7 +95,7 @@ class MinisterioController extends Controller
     public function undo()
     {
         $this->invoker->undoCommand();
-        // $this->redirect('/ministerios');
+        $this->redirect('/ministerios');
     }
 
 }

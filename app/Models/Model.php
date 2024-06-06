@@ -21,11 +21,6 @@ class Model
         $this->connection();
     }
 
-    public function __destruct()
-    {
-        $this->disconnection();
-    }
-
 
     public function connection()
     {
@@ -36,9 +31,6 @@ class Model
         // echo "Connected successfully <br> PORT:3306";
     }
 
-    public function disconnection(){
-        if($this->conn) $this->conn->close();
-    }
 
     public function query($sql, $data = [], $params = null)
     {
