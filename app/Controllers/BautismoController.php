@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Templates\Bautismo;
+use App\Controllers\Templates\Sacramento;
 use App\Models\MiembroModel;
 use App\Models\BautismoModel;
 
@@ -62,7 +64,8 @@ class BautismoController extends Controller
     {
         $data = $_POST;
 
-        (new BautismoModel)->create($data);
+        // (new BautismoModel)->create($data);
+        (new Bautismo)->generarCertificado($data);
 
         return header('Location: /bautismos');
     }
@@ -77,7 +80,7 @@ class BautismoController extends Controller
     }
 
     public function destroy($id){
-        (new BautismoModel)->delete($id);
+        (new Bautismo)->eliminarCertificado($id);
         return header('Location: /bautismos');
     }
 

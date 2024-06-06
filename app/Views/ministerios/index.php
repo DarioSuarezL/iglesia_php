@@ -13,6 +13,10 @@
     
         <a href="/" class="btn btn-primary" >← Volver</a>
         <a href="/ministerios/create" class="btn btn-primary" >Crear ministerio</a>
+        <form action="/ministerios/undo" method="POST">
+            <button type="submit" class="btn btn-secondary" >Deshacer ultimo cambio</button>
+        </form>
+
     
         <?php foreach($ministerios as $ministerio): ?>
             <li>
@@ -21,6 +25,9 @@
                 </a>
             </li>
         <?php endforeach; ?>
+
+
+
     </div>
 
     

@@ -3,9 +3,21 @@
 namespace App\Controllers;
 
 use App\Models\MinisterioModel;
+use App\Controllers\Commands\StoreCommand;
+use App\Controllers\Commands\UpdateCommand;
+use App\Controllers\Commands\DestroyCommand;
+use App\Controllers\Commands\MinisterioInvoker;
 
 class MinisterioController extends Controller
 {
+
+    public MinisterioInvoker $invoker;
+
+    public function __construct()
+    {
+        $this->invoker = new MinisterioInvoker;
+    }
+
     public function index()
     {
         $model = (new MinisterioModel)->all();
@@ -26,9 +38,16 @@ class MinisterioController extends Controller
     public function store()
     {
         $data = $_POST;
-        $model = new MinisterioModel;
-        $model->create($data);
-        unset($model);
+
+        $cmd = new StoreCommand($data);
+        
+        $this->invoker->setCommand($cmd);
+        $this->invoker->executeCommand();
+
+
+        // $model = new MinisterioModel;
+        // $model->create($data);
+        // unset($model);
         // return json_encode($model);
         $this->redirect('/ministerios');
     }
@@ -54,15 +73,29 @@ class MinisterioController extends Controller
     public function update($id)
     {
         $data = $_POST;
-        (new MinisterioModel)->update($id, $data);
+        
+        $cmd = new UpdateCommand($data, $id);
+        $this->invoker->setCommand($cmd);
+        $this->invoker->executeCommand();
+        
+        // (new MinisterioModel)->update($id, $data);
+
         $this->redirect('/ministerios');
     }
 
     public function destroy($id)
     {
-        $model = new MinisterioModel;
-        $model->delete($id);
-        unset($model);
+        $data = (new MinisterioModel)->find($id);
+        $cmd = new DestroyCommand($data);
+        $this->invoker->setCommand($cmd);
+        $this->invoker->executeCommand();
         $this->redirect('/ministerios');
     }
+
+    public function undo()
+    {
+        $this->invoker->undoCommand();
+        // $this->redirect('/ministerios');
+    }
+
 }

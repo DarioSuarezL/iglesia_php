@@ -21,6 +21,7 @@ Route::post('/miembros/:id', [MiembroController::class, 'update']);
 Route::post('/miembros/:id/delete', [MiembroController::class, 'destroy']);
 
 Route::get('/ministerios', [MinisterioController::class, 'index']);
+Route::post('/ministerios/undo', [MinisterioController::class, 'undo']);
 Route::get('/ministerios/create', [MinisterioController::class, 'create']);
 Route::post('/ministerios', [MinisterioController::class, 'store']);
 Route::get('/ministerios/:id/edit', [MinisterioController::class, 'edit']);
