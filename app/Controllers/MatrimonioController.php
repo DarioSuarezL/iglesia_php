@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Templates\Matrimonio;
 use App\Models\MiembroModel;
 use App\Models\MatrimonioModel;
 
@@ -39,7 +40,8 @@ class MatrimonioController extends Controller
     
     public function store()
     {
-        (new MatrimonioModel)->create($_POST);
+        $data = $_POST;
+        (new Matrimonio)->sacramentar($data);
         header('Location: /matrimonios');
     }
     
@@ -80,7 +82,7 @@ class MatrimonioController extends Controller
 
     public function destroy($id)
     {
-        (new MatrimonioModel)->delete($id);
+        (new Matrimonio)->desacramentar($id);
         header('Location: /matrimonios');
     }
 

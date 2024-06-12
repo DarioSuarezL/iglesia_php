@@ -65,7 +65,7 @@ class BautismoController extends Controller
         $data = $_POST;
 
         // (new BautismoModel)->create($data);
-        (new Bautismo)->generarCertificado($data);
+        (new Bautismo)->sacramentar($data);
 
         return header('Location: /bautismos');
     }
@@ -80,7 +80,7 @@ class BautismoController extends Controller
     }
 
     public function destroy($id){
-        (new Bautismo)->eliminarCertificado($id);
+        (new Bautismo)->desacramentar($id);
         return header('Location: /bautismos');
     }
 
