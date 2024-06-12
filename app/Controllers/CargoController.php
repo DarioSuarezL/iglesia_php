@@ -4,13 +4,25 @@ namespace App\Controllers;
 
 use App\Models\CargoModel;
 use App\Models\MinisterioModel;
+use App\Controllers\Proxy\CargoService;
+use App\Controllers\Proxy\CargoServiceProxy;
 
 class CargoController extends Controller
 {
+
+    private $proxy;
+    private $service;
+
+
+    public function __construct()
+    {
+        $this->service = new CargoService;
+        $this->proxy = new CargoServiceProxy($this->service);
+    }
+
     public function index()
     {
-        $model = new CargoModel;
-        $data = $model->all();
+        $data = $this->proxy->findAll();
 
         foreach ($data as $key => $value) {
             $data[$key]['ministerio_nombre'] = (new MinisterioModel)->find($value['ministerio_id'])['nombre'];
@@ -44,7 +56,7 @@ class CargoController extends Controller
     
     public function show($id)
     {
-        $data = (new CargoModel)->find($id);
+        $data = $this->proxy->find($id);
         $ministerio = (new MinisterioModel)->find($data['ministerio_id']);
         
         $data['ministerio_id'] = $ministerio['nombre'];
@@ -61,26 +73,20 @@ class CargoController extends Controller
     public function store()
     {
         $data = $_POST;
-        $model = new CargoModel;
-        $model->create($data);
-        unset($model);
+        $this->proxy->create($data);
         return header('Location: /cargos');
     }
 
     public function update($id)
     {
         $data = $_POST;
-        $model = new CargoModel;
-        $model->update($id, $data);
-        unset($model);
+        $this->proxy->update($id, $data);
         return header('Location: /cargos');
     }
 
     public function destroy($id)
     {
-        $model = new CargoModel;
-        $model->delete($id);
-        unset($model);
+        $this->proxy->delete($id);
         return header('Location: /cargos');
     }
 }
