@@ -5,14 +5,14 @@ use App\Models\MinisterioModel;
 
 class UpdateCommand implements Command
 {
-    private $data_old;
+    private $ministerioModel;
     private $data;
     private $id;
     
     public function __construct($data, $id)
     {
         $this->id = $id;
-        $this->data_old = (new MinisterioModel)->find($id);
+        $this->ministerioModel = (new MinisterioModel)->find($id);
         $this->data = $data;
     }
 
@@ -23,6 +23,6 @@ class UpdateCommand implements Command
 
     public function undo()
     {
-        (new MinisterioModel)->update($this->id, $this->data_old);
+        (new MinisterioModel)->update($this->id, $this->ministerioModel);
     }
 }

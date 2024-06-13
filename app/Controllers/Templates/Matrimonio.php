@@ -31,11 +31,13 @@ class Matrimonio extends Sacramento{
         $dataOld2 = (new MiembroModel)->find($id2);
 
         (new MiembroModel)->update($id1, [
-            'casado' => $dataOld1['casado'] == 1 ? 0 : 1
+            'casado' => $dataOld1['casado'] == 1 ? 0 : 1,
+            'estado_civil_id' => $dataOld1['estado_civil_id'] == 1 ? 2 : 1
         ]);
 
         (new MiembroModel)->update($id2, [
-            'casado' => $dataOld2['casado'] == 1 ? 0 : 1
+            'casado' => $dataOld2['casado'] == 1 ? 0 : 1,
+            'estado_civil_id' => $dataOld2['estado_civil_id'] == 1 ? 2 : 1,
         ]);
 
 

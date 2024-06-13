@@ -6,7 +6,7 @@ class CargoServiceProxy implements CargoServiceInterface
 {
     private CargoService $cargoService;
     private $listCache;
-    private $CargoCache;
+    private $cargoCache;
     private bool $needRefreshList;
     private bool $needRefreshCargo;
 
@@ -20,7 +20,7 @@ class CargoServiceProxy implements CargoServiceInterface
         }
 
         $this->listCache = $_SESSION['listCache'] ?? [];
-        $this->CargoCache = $_SESSION['CargoCache'] ?? null;
+        $this->cargoCache = $_SESSION['cargoCache'] ?? null;
         $this->needRefreshList = $_SESSION['needRefreshList'] ?? false;
         $this->needRefreshCargo = $_SESSION['needRefreshCargo'] ?? false;
     }
@@ -52,15 +52,15 @@ class CargoServiceProxy implements CargoServiceInterface
 
     public function find($id)
     {
-        if ($this->CargoCache == null || $this->needRefreshCargo || $this->CargoCache['id'] != $id) {
-            $this->CargoCache = $this->cargoService->find($id);
-            $_SESSION['CargoCache'] = $this->CargoCache;
+        if ($this->cargoCache == null || $this->needRefreshCargo || $this->cargoCache['id'] != $id) {
+            $this->cargoCache = $this->cargoService->find($id);
+            $_SESSION['cargoCache'] = $this->cargoCache;
         }
 
         $this->needRefreshCargo = false;
         $_SESSION['needRefreshCargo'] = $this->needRefreshCargo;
 
-        return $this->CargoCache;
+        return $this->cargoCache;
     }
 
     public function findAll()

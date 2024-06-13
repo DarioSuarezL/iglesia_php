@@ -6,14 +6,21 @@ use App\Models\CargoModel;
 
 class CargoService implements CargoServiceInterface
 {
+    private $cargoModel;
+
+    public function __construct()
+    {
+        $this->cargoModel = new CargoModel;
+    }
+
     public function create($data)
     {
-        (new CargoModel)->create($data);
+        $this->cargoModel->create($data);
     }
 
     public function delete($id)
     {
-        (new CargoModel)->delete($id);
+        $this->cargoModel->delete($id);
     }
 
     public function update($id, $data)
@@ -24,12 +31,12 @@ class CargoService implements CargoServiceInterface
     public function find($id)
     {
         // throw new \Exception('Method not implemented');
-        return (new CargoModel)->find($id);
+        return $this->cargoModel->find($id);;
     }
 
     public function findAll()
     {
         // throw new \Exception('Method not implemented');
-        return (new CargoModel)->all();
+        return $this->cargoModel->all();
     }
 }

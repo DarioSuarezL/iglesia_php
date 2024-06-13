@@ -41,7 +41,7 @@ class MatrimonioController extends Controller
     public function store()
     {
         $data = $_POST;
-        (new Matrimonio)->sacramentar($data);
+        (new Matrimonio)->realizar($data);
         header('Location: /matrimonios');
     }
     
@@ -82,7 +82,7 @@ class MatrimonioController extends Controller
 
     public function destroy($id)
     {
-        (new Matrimonio)->desacramentar($id);
+        (new Matrimonio)->deshacer($id);
         header('Location: /matrimonios');
     }
 

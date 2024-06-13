@@ -5,21 +5,21 @@ use App\Models\MinisterioModel;
 
 class StoreCommand implements Command
 {
-    private $data;
-    private $id;
+    private $ministerioModel;
 
-    public function __construct($data)
+    public function __construct($ministerioModel)
     {
-        $this->data = $data;
+        $this->ministerioModel = $ministerioModel;
     }
+
 
     public function execute()
     {
-        $this->id = (new MinisterioModel)->create($this->data)['id'];
+        $this->ministerioModel = (new MinisterioModel)->create($this->ministerioModel);
     }
 
     public function undo()
     {
-        (new MinisterioModel)->delete($this->id);
+        (new MinisterioModel)->delete($this->ministerioModel['id']);
     }
 }

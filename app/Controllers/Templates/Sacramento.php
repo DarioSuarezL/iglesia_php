@@ -4,12 +4,12 @@ namespace App\Controllers\Templates;
 
 abstract class Sacramento{
 
-    public function sacramentar($data){
+    public function realizar($data){
         $this->generarCertificado($data);
         $this->cambiarEstadoMiembro($data);
     }
 
-    public function desacramentar($id){
+    public function deshacer($id){
         $this->cambiarEstadoMiembro($id);
         $this->eliminarCertificado($id);
     }

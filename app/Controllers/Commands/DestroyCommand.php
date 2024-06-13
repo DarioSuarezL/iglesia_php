@@ -6,22 +6,21 @@ use App\Models\MinisterioModel;
 class DestroyCommand implements Command
 {
 
-    private MinisterioModel $ministerioModel;
-    private $data;
+    private $ministerioModel;
 
-    public function __construct($data)
+    public function __construct($ministerioModel)
     {
-        $this->data = $data;
+        $this->ministerioModel = $ministerioModel;
     }
 
     public function execute()
     {
-        (new MinisterioModel)->delete($this->data['id']);
+        (new MinisterioModel)->delete($this->ministerioModel['id']);
     }
 
     public function undo()
     {
-        (new MinisterioModel)->create($this->data);
+        (new MinisterioModel)->create($this->ministerioModel);
     }
 
 }

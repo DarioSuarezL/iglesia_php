@@ -15,7 +15,6 @@ class MinisterioInvoker
         $this->command_history = $_SESSION['command_history'] ?? [];
     }
 
-
     public function setCommand(Command $cmd)
     {
         $this->command = $cmd;

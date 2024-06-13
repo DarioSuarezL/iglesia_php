@@ -4,11 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\Templates\Bautismo;
 use App\Controllers\Templates\Sacramento;
+use App\Controllers\Templates\SacramentoClient;
 use App\Models\MiembroModel;
 use App\Models\BautismoModel;
 
 class BautismoController extends Controller
 {
+    private SacramentoClient $sacramentoClient;
+
+    public function __construct()
+    {
+        $bautismo = new Bautismo;
+        $this->sacramentoClient = new SacramentoClient($bautismo);
+    }
+
     public function index()
     {
         $data = (new BautismoModel)->all();
@@ -65,7 +74,7 @@ class BautismoController extends Controller
         $data = $_POST;
 
         // (new BautismoModel)->create($data);
-        (new Bautismo)->sacramentar($data);
+        $this->sacramentoClient->realizar($data);
 
         return header('Location: /bautismos');
     }
@@ -80,7 +89,7 @@ class BautismoController extends Controller
     }
 
     public function destroy($id){
-        (new Bautismo)->desacramentar($id);
+        $this->sacramentoClient->deshacer($id);
         return header('Location: /bautismos');
     }
 
